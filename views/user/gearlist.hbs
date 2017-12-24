@@ -1,0 +1,65 @@
+{{!-- We have a gear list signaled by products variable --}}
+{{#if hasErrors}}
+	<div class="alert alert-danger">
+		{{# each messages}}
+			<p>{{this}}</p>
+		{{/each}}
+	</div>
+{{/if}}
+{{# if products }}
+	<div class="row">
+		<div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+			<ul class="list-group">
+				{{# each products }}
+					<li class="list-group-item">
+						<span class="label label-success">{{this.price}}</span>
+						<span class="badge">{{this.qty}}</span>
+						<strong>{{this.item.itemName}}</strong>					
+{{!-- 						<div class="btn-group">
+							<button class="btn btn-primary btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+								Action <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">
+								<li><a href="#">Reduce By 1</a></li>
+								<li><a href="#">Remove All</a></li>
+							</ul>
+						</div> --}}
+					</li>
+				{{/each}}
+				
+			</ul>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+			<strong>Total: {{totalPrice}}</strong>
+		</div>
+	</div>
+	<div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+		<form action="/user/gearlist" method="post">
+			<div class="form-group">
+				<label for="bagTitle">Gear List Title</label>
+				<input type="text" id="bagTitle" name="bagTitle" class="form-control">
+			</div>
+			<div class="form-group">
+				<label for="description">Add a description</label>
+				<input type="text" id="description" name="description" class="form-control">
+			</div>			
+			<input type="hidden" name="_csrf" value="{{csrfToken}}">
+			<button type="submit" class="btn btn-primary">Save Gear List</button>
+	      	<a href="/clear-gearlist/" class="btn btn-primary" role="button">Clear Gear List</a>
+		</form>
+	</div>
+{{else}}
+	<div class="row">
+		<div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+			<h2>No Items in your current gear list</h2>
+		</div>
+		<div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+			<a href="/">
+				<button type="button" class="btn btn-success">Add Items</button>	
+			</a>
+		</div>
+	</div>
+{{/if}}
+

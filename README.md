@@ -34,3 +34,37 @@
 
 # Personal Notes
 - Don't forget to call next() in all user defined functions for middleware! It will hang if forgotten
+
+# Phase Three, Session Storing and Bag Model
+## Session Store
+- npm install --save connect-mongo
+- Use MongoStore to store sessions into a db and not in memory
+- Use the store as the existing mongoose connection
+- Send in the session to all the views
+
+## Bag Model
+- Stores the current items added to the bag for the session
+- Keeps counters of quantity of item and total price
+
+# Phase Four, Saving Bags with User
+- Off the books, working alone now
+- Create bag db schema and model
+- npm install --save passport-custom for processing gear list db input (maybe used passport-http)
+- Store session's bag in the db
+
+# Phase Five, Display user's bag in the profile page
+
+# TODOs
+- Rounding error when displaying total
+- Display individual gear list pages when clicking in
+- Show image for gear lists (maybe the first image)?
+- Add description for every item (VERY HARD TO DO, COULDN'T DO A FORM FOR AN INDIVIDUAL ITEM IN THE HANDLEBARS LIST)
+- Clear the current gear list when added to bag (Done)
+- Show current user's gear lists (Done)
+- Add username field to user model (Done)
+- Problem: When saving gear list it logs out and redirects to sign in page. (Done, Fixed by not using passport)
+
+# Challenges
+- Learning curve of NodeJS and routing
+- CSRF Protection
+- Session handling
