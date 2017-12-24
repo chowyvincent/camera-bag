@@ -16,8 +16,10 @@ module.exports = function GearList(oldGearList){
 		// Regardless of new or old item
 		storedItem.qty++;
 		storedItem.price = storedItem.item.price * storedItem.qty;
+		storedItem.price = parseFloat((Math.round(storedItem.price * 100) / 100).toFixed(2));
 		this.totalQty++;
 		this.totalPrice += storedItem.item.price;
+		this.totalPrice = parseFloat((Math.round(this.totalPrice * 100) / 100).toFixed(2));
 	};
 
 	// Helper function to return the list of items in the bag

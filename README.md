@@ -55,10 +55,12 @@
 # Phase Five, Display user's bag in the profile page
 
 # TODOs
-- Rounding error when displaying total
+
 - Display individual gear list pages when clicking in
+- Redo gearlist model
 - Show image for gear lists (maybe the first image)?
 - Add description for every item (VERY HARD TO DO, COULDN'T DO A FORM FOR AN INDIVIDUAL ITEM IN THE HANDLEBARS LIST)
+- Rounding error when displaying total (Done)
 - Clear the current gear list when added to bag (Done)
 - Show current user's gear lists (Done)
 - Add username field to user model (Done)
