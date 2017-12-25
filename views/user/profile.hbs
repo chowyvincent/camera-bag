@@ -8,20 +8,13 @@
 			{{# each this }}	
 				<div class="col-sm-6 col-md-4">
 					<div class="thumbnail">
+						<h2>{{this.title}}</h1>
 						<ul>
-							<li>Gear List Title: {{this.title}}</li>
-							<li>Gear List Description: {{this.description}}</li>
+							<li>Description: {{this.description}}</li>
 							<li>Items in Gear List: {{this.totalQty}}</li>
 							<li>Total Item Price: ${{this.totalPrice}}</li>
 						</ul>
-					  	{{!-- <img src={{this.products}} class="img-responsive" alt="..."> --}}
-					  	{{!-- <div class="caption">
-					    	<h3>{{this.totalQty}}</h3>
-					    	<div class="clearfix">
-						      	<div class="price pull-left">{{this.description}}</div>	
-						      	<a href="/add-to-gearlist/{{ this._id }}" class="btn btn-success pull-right" role="button">Add to Gear List</a>
-					    	</div>				    	
-						</div> --}}
+				      	<a href="/user/gearlist-detail/{{this._id}}" class="btn btn-success pull-left" role="button">See Items</a>
 					</div>
 			    </div>
 	      	{{/each}}

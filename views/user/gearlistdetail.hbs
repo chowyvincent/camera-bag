@@ -6,10 +6,9 @@
 				  	<img src={{this.imageUrl}} class="img-responsive" alt="...">
 				  	<div class="caption">
 				    	<h3>{{this.itemName}}</h3>
-				    	<div class="clearfix">
-					      	<div class="price pull-left">${{this.price}}</div>	
-					      	<a href="/add-to-gearlist/{{this._id}}" class="btn btn-success pull-right" role="button">Add to Gear List</a>
-				    	</div>				    	
+				    	<h3>{{this._id}}</h3>
+				      	<div class="price pull-left">${{this.price}}</div>
+				      	<div class="price pull-right">Qty: {{this.qty}}</div>
 					</div>
 				</div>
 		    </div>

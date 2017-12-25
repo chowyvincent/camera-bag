@@ -53,6 +53,9 @@ passport.use('local.signup', new LocalStrategy({
 			newUser.username = req.body.username;
 			newUser.email = email;
 			newUser.password = newUser.encryptPassword(password);
+			// Save user into the session
+			req.session.userId = newUser._id;
+			req.session.username = newUser.username;
 			// Insert it into the db
 			newUser.save(function(err, result){
 				if(err){
@@ -106,6 +109,7 @@ passport.use('local.signin', new LocalStrategy({
 		}
 		// Found user, and valid password, return the user
 		req.session.userId = user._id;
+		req.session.username = user.username;
 		return done(null, user);
 	});
 }));

@@ -55,18 +55,17 @@
 # Phase Five, Display user's bag in the profile page
 
 # TODOs
-
-- Display individual gear list pages when clicking in
-- Redo gearlist model
 - Show image for gear lists (maybe the first image)?
-- Add description for every item (VERY HARD TO DO, COULDN'T DO A FORM FOR AN INDIVIDUAL ITEM IN THE HANDLEBARS LIST)
+- Display individual gear list pages when clicking in (Done)
 - Rounding error when displaying total (Done)
 - Clear the current gear list when added to bag (Done)
 - Show current user's gear lists (Done)
 - Add username field to user model (Done)
-- Problem: When saving gear list it logs out and redirects to sign in page. (Done, Fixed by not using passport)
+- Redo gearlist model (Decided not to do)
+- Add description for every item (VERY HARD TO DO, COULDN'T DO A FORM FOR AN INDIVIDUAL ITEM IN THE HANDLEBARS LIST)
 
 # Challenges
 - Learning curve of NodeJS and routing
 - CSRF Protection
 - Session handling
+- HANDLING ASYNCHRONOUSITY OF NODE

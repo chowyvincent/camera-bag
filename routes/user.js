@@ -73,16 +73,47 @@ router.post('/gearlist', isLoggedIn, function(req, res, next){
 	});
 });
 
-
-router.get('/profile', isLoggedIn, function(req, res, next){
-	var username = "";
-	User.findById(req.session.userId, function(err, user){
+router.get('/gearlist-detail/:id', function(req, res, next){
+	Bag.findById(req.params.id, function(err, bag){
 		if(err){
 			throw err;
 		}
-		username = user.username;
+		var productIds = [];
+		var productQtys = [];
+		for(var i = 0; i < bag.products.length; i += 1){
+			productQtys.push(bag.products[i].qty);
+			productIds.push(bag.products[i].productId);
+		}
+		Product.find({"_id": {$in: productIds}}, function(err, products){
+			var objects = [];
+			for(var i = 0; i < products.length; i += 1){
+				var product = products[i];
+				var newObj = {};
+				newObj.itemName = product.itemName;
+				newObj.imageUrl = product.imageUrl;
+				newObj.price = product.price;
+				newObj.qty = productQtys[i];
+				objects.push(newObj);
+			}
+			var productRow = [];
+			var productQtyRow = [];
+			var rowSize = 3;
+			for(var i = 0; i < objects.length; i += rowSize){
+				productRow.push(objects.slice(i, i + rowSize));
+			}
+			console.log(objects);
+			res.render('user/gearlistdetail', {title: 'Camera Bag', products: productRow});
+		});
+
+		
 	});
+});
+
+router.get('/profile', isLoggedIn, function(req, res, next){
 	Bag.find({'userId': req.session.userId}, function(err, bags){
+		if(err){
+			throw err;
+		}
 		var results = [];
 		// var images = [];
 		var rowSize = 3;
@@ -101,7 +132,7 @@ router.get('/profile', isLoggedIn, function(req, res, next){
 			// images.push(innerImages);
 			results.push(bags.slice(i, i + rowSize));
 		}
-		res.render('user/profile', {title: 'User Profile', username: username, results: results});
+		res.render('user/profile', {title: 'User Profile', username: req.session.username, results: results});
 	});
 });
 

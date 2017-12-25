@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var ObjectId = mongoose.SchemaTypes.ObjectId;
 var GearListItem = require('../models/gearlistitem');
 
 // Bag model stores gear lists
