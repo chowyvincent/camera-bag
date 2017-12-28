@@ -55,7 +55,11 @@
 # Phase Five, Display user's bag in the profile page
 
 # TODOs
+- Different views for different types of gear (bodies/lenses/stabilizers)
+- Better page navigation (breadcrumbs?)
 - Show image for gear lists (maybe the first image)?
+- Implement DB queries for user search (Done)
+- Search bar to search existing users (done)
 - Display individual gear list pages when clicking in (Done)
 - Rounding error when displaying total (Done)
 - Clear the current gear list when added to bag (Done)

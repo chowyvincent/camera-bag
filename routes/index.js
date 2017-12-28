@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var Product = require('../models/product');
+var User = require('../models/user');
+var Bag = require('../models/bag');
 var GearList = require('../models/gearlist');
 
 /* GET home page. */
@@ -12,6 +14,15 @@ router.get('/', function(req, res, next) {
 			productRow.push(docs.slice(i, i + rowSize));
 		}
 		res.render('bag/index', {title: 'Camera Bag', products: productRow})
+	});
+});
+
+router.get('/search', function(req, res, next){
+	User.find({"username": {"$regex": req.query.username, "$options": "i"}}, function(err, users){
+		if(err){
+			throw err;
+		}
+		res.render("bag/searchresults", {users: users});
 	});
 });
 
@@ -32,6 +43,28 @@ router.get('/add-to-gearlist/:id', function(req, res, next){
 		console.log(req.session.gearlist);
 		res.redirect('/');
 	});
+});
+
+router.get('/profile/:username', function(req, res, next){
+	console.log(req.params.username);
+	User.findOne({'username': req.params.username}, function(err, user){
+		if(err){
+			throw err;
+		}
+		console.log(user.username);
+		Bag.find({'userId': user._id}, function(err, bags){
+			if(err){
+				throw err;
+			}
+			var results = [];
+			var rowSize = 3;
+			for(var i = 0; i < bags.length; i += rowSize){
+				results.push(bags.slice(i, i + rowSize));
+			}
+			res.render('bag/searchprofile', {title: 'User Profile', username: req.params.username, results: results});
+		});
+	});
+
 });
 
 router.get('/clear-gearlist', function(req, res, next){

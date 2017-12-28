@@ -15,3 +15,7 @@
 	font-weight: bold;
 	font-size:  16px;
 }
+
+#navBarSearchForm input[type=text]{
+	width: 430px !important;
+}

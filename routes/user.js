@@ -13,10 +13,6 @@ var User = require('../models/user');
 var csrfProtection = csrf();
 router.use(csrfProtection);
 
-router.get('/error', function(req, res, next){
-	res.render('user/usererror');
-});
-
 router.get('/gearlist', isLoggedIn, function(req, res, next){
 	// If a created gearlist exists
 	if(!req.session.gearlist){

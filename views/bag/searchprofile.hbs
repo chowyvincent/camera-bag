@@ -1,0 +1,30 @@
+{{!-- We have a gear list signaled by results variable --}}
+<div class="row">
+	<h1 class="col-sm-4 col-md-offset-4">{{username}}'s Profile</h1>
+</div>
+{{# if results }}
+	{{# each results }}
+		<div class="row">
+			{{# each this }}	
+				<div class="col-sm-6 col-md-4">
+					<div class="thumbnail">
+						<h2>{{this.title}}</h1>
+						<ul>
+							<li>Description: {{this.description}}</li>
+							<li>Items in Gear List: {{this.totalQty}}</li>
+							<li>Total Item Price: ${{this.totalPrice}}</li>
+						</ul>
+				      	<a href="/user/gearlist-detail/{{this._id}}" class="btn btn-success pull-left" role="button">See Items</a>
+					</div>
+			    </div>
+	      	{{/each}}
+		</div>
+	{{/each}}
+{{else}}
+	<div class="row">
+		<div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+			<h2>No Gear Lists in their Bag</h2>
+		</div>
+	</div>
+{{/if}}
+
