@@ -55,9 +55,10 @@
 # Phase Five, Display user's bag in the profile page
 
 # TODOs
-- Different views for different types of gear (bodies/lenses/stabilizers)
+- Seed more data (lenses)
 - Better page navigation (breadcrumbs?)
 - Show image for gear lists (maybe the first image)?
+- Different views for different types of gear (bodies/lenses/stabilizers) (Done)
 - Implement DB queries for user search (Done)
 - Search bar to search existing users (done)
 - Display individual gear list pages when clicking in (Done)

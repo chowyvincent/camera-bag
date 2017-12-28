@@ -19,3 +19,11 @@
 #navBarSearchForm input[type=text]{
 	width: 430px !important;
 }
+
+.brandTitle{
+	text-align: center;
+}
+
+.thumbnail.brandTitle{
+	min-height: 200px;
+}

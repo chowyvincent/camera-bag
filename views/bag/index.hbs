@@ -1,18 +1,31 @@
-{{# each products }}
-	<div class="row">
-		{{# each this }}	
-			<div class="col-sm-6 col-md-4">
-				<div class="thumbnail">
-				  	<img src={{this.imageUrl}} class="img-responsive" alt="...">
-				  	<div class="caption">
-				    	<h3>{{this.itemName}}</h3>
-				    	<div class="clearfix">
-					      	<div class="price pull-left">${{this.price}}</div>	
-					      	<a href="/add-to-gearlist/{{this._id}}" class="btn btn-success pull-right" role="button">Add to Gear List</a>
-				    	</div>				    	
-					</div>
-				</div>
-		    </div>
-      	{{/each}}
-	</div>
-{{/each}}
+<div class="row">
+	<div class="col-sm-6 col-md-4">
+		<div class="thumbnail brandTitle" >
+		  	<div class="caption">
+		    	<h2 class="brandTitle"><a href="/categories/canon">Canon</a></h3>		    	
+			</div>
+		</div>
+    </div>
+	<div class="col-sm-6 col-md-4">
+		<div class="thumbnail brandTitle" >
+		  	<div class="caption">
+		    	<h2 class="brandTitle"><a href="/categories/nikon">Nikon</a></h3>		    	
+			</div>
+		</div>
+    </div>
+    <div class="col-sm-6 col-md-4">
+		<div class="thumbnail brandTitle" >
+		  	<div class="caption">
+		    	<h2 class="brandTitle"><a href="/categories/sony">Sony</a></h3>		    	
+			</div>
+		</div>
+    </div>
+    <div class="col-sm-6 col-md-4">
+		<div class="thumbnail brandTitle" >
+		  	<div class="caption">
+		    	<h2 class="brandTitle"><a href="/categories/panasonic">Panasonic</a></h3>		    	
+			</div>
+		</div>
+    </div>    
+</div>
+

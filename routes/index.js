@@ -7,14 +7,26 @@ var GearList = require('../models/gearlist');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-	Product.find(function(err, docs){
+	res.render('bag/index', {title: 'Camera Bag'});
+});
+
+router.get('/categories/:category', function(req, res, next){
+	var categoryName = req.params.category.charAt(0).toUpperCase() + req.params.category.slice(1);
+	res.render('bag/producttypes', {category: req.params.category, categoryName: categoryName});
+});
+
+router.get('/categories/:category/:product_type', function(req, res, next){
+	Product.find({"itemName" : {"$regex": req.params.category, "$options": "i"}, "itemType": req.params.product_type}, function(err, products){
+		if(err){
+			throw err;
+		}
 		var productRow = [];
 		var rowSize = 3;
-		for(var i = 0; i < docs.length; i += rowSize){
-			productRow.push(docs.slice(i, i + rowSize));
+		for(var i = 0; i < products.length; i += rowSize){
+			productRow.push(products.slice(i, i + rowSize));
 		}
-		res.render('bag/index', {title: 'Camera Bag', products: productRow})
-	});
+		res.render('bag/items', {title: 'Camera Bag', products: productRow})
+	});	
 });
 
 router.get('/search', function(req, res, next){
