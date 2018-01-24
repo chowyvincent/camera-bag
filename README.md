@@ -55,9 +55,15 @@
 # Phase Five, Display user's bag in the profile page
 
 # TODOs
-- Seed more data (lenses)
-- Better page navigation (breadcrumbs?)
+- Product search
+- Edit existing gear list
+- Proceed to checkout page or continue shopping
+- Good splash page, make the index page look better!
 - Show image for gear lists (maybe the first image)?
+- Re-enter password validation (done)
+- Fix redirect to index page when adding to cart, just redirect to current page (Done)
+- Better page navigation with breadcrumbs (done)
+- Seed more data (done)
 - Different views for different types of gear (bodies/lenses/stabilizers) (Done)
 - Implement DB queries for user search (Done)
 - Search bar to search existing users (done)
@@ -67,10 +73,13 @@
 - Show current user's gear lists (Done)
 - Add username field to user model (Done)
 - Redo gearlist model (Decided not to do)
-- Add description for every item (VERY HARD TO DO, COULDN'T DO A FORM FOR AN INDIVIDUAL ITEM IN THE HANDLEBARS LIST)
+- Add description for every item (Couldn't do form for individual item)
 
 # Challenges
 - Learning curve of NodeJS and routing
 - CSRF Protection
 - Session handling
-- HANDLING ASYNCHRONOUSITY OF NODE
+- Handling Asynchronousity of Node.js
+
+# Improvements
+- Don't seed the data, use the Amazon Product Advertising API to display all possible items for a richer data model

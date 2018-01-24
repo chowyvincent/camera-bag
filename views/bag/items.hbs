@@ -1,3 +1,19 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item"><a href="/categories/{{category}}">{{categoryName}} Cameras & Lenses</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{productTypeName}}</li>
+  </ol>
+</nav>
+
+{{#if addSuccess}}
+	<div class="alert alert-success">
+		{{# each messages}}
+			<p>{{this}}</p>
+		{{/each}}
+	</div>
+{{/if}}
+
 {{# each products }}
 	<div class="row">
 		{{# each this }}	

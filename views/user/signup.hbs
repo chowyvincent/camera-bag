@@ -21,6 +21,10 @@
 				<label for="password">Password</label>
 				<input type="password" id="password" name="password" class="form-control">
 			</div>
+			<div class="form-group">
+				<label for="passwordTwo">Re-enter Password</label>
+				<input type="password" id="passwordTwo" name="passwordTwo" class="form-control">
+			</div>			
 			{{!-- Token is also submitted when I sent the form. CSRF will try to find the input with _csrf --}}
 			<input type="hidden" name="_csrf" value="{{csrfToken}}">
 			<button type="submit" class="btn btn-primary">Sign Up</button>

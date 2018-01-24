@@ -81,6 +81,10 @@ router.get('/gearlist-detail/:id', function(req, res, next){
 			productIds.push(bag.products[i].productId);
 		}
 		Product.find({"_id": {$in: productIds}}, function(err, products){
+			if(err){
+				throw err;
+			}
+			console.log(products)
 			var objects = [];
 			for(var i = 0; i < products.length; i += 1){
 				var product = products[i];
@@ -97,7 +101,7 @@ router.get('/gearlist-detail/:id', function(req, res, next){
 			for(var i = 0; i < objects.length; i += rowSize){
 				productRow.push(objects.slice(i, i + rowSize));
 			}
-			console.log(objects);
+			// console.log(objects);
 			res.render('user/gearlistdetail', {title: 'Camera Bag', products: productRow});
 		});
 

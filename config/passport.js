@@ -23,7 +23,8 @@ passport.use('local.signup', new LocalStrategy({
 }, function(req, email, password, done){
 	// Validate the input parameters
 	req.checkBody('email', 'Invalid Email').notEmpty().isEmail();
-	req.checkBody('password', 'Invalid Password').notEmpty().isLength({min: 4});
+	req.checkBody('password', 'Invalid Password. Must 4 characters or more.').notEmpty().isLength({min: 4});
+	req.checkBody('passwordTwo', 'Passwords do not match').notEmpty().equals(req.body.password);
 	var errors = req.validationErrors(); // Runs all validators and stores the gathered errors
 	if(errors){
 		var messages = []

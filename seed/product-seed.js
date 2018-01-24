@@ -3,7 +3,10 @@ var mongoose = require('mongoose');
 var fs = require('fs');
 mongoose.connect('localhost:27017/camerabag');
 
-var data = JSON.parse(fs.readFileSync('bh_bodies.json', 'utf8'));
+var bodyData = JSON.parse(fs.readFileSync('bh_bodies.json', 'utf8'));
+var lensData = JSON.parse(fs.readFileSync('bh_lenses.json', 'utf8'));
+var lensImageData = JSON.parse(fs.readFileSync('lensImages.json', 'utf8'));
+var bodyImageData = JSON.parse(fs.readFileSync('bodyImages.json', 'utf8'));
 
 // // Make mulitple products
 // var products = [
@@ -39,18 +42,32 @@ var data = JSON.parse(fs.readFileSync('bh_bodies.json', 'utf8'));
 // 	})
 // ];
 
+// Process Bodies
 var products = [];
-for(var i = 0; i < data.length; i++){
-	// rawData = data[i];
-	// console.log(rawData);
-	var product = new Product(data[i]);
-	if(data[i].itemName.includes("mm")){
+for(var i = 0; i < bodyData.length; i++){
+	var product = new Product(bodyData[i]);
+	product.imageUrl = bodyImageData[product.itemName]
+	if(bodyData[i].itemName.includes("mm")){
 		product.itemType = "lens";
 	}else{
 		product.itemType = "body";
 	}
 	products.push(product);
 }
+
+// Process Lenses
+for(var i = 0; i < lensData.length; i++){
+	var product = new Product(lensData[i]);
+	product.imageUrl = lensImageData[product.itemName]
+	if(lensData[i].itemName.includes("mm")){
+		product.itemType = "lens";
+	}else{
+		product.itemType = "body";
+	}
+	products.push(product);
+}
+
+
 // Used to signal when the function is done for the callback to disconnect mongoose for asycnhronous-ity of nodejs
 var done = 0;
 // Store products in the database

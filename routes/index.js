@@ -25,7 +25,11 @@ router.get('/categories/:category/:product_type', function(req, res, next){
 		for(var i = 0; i < products.length; i += rowSize){
 			productRow.push(products.slice(i, i + rowSize));
 		}
-		res.render('bag/items', {title: 'Camera Bag', products: productRow})
+		var categoryName = req.params.category.charAt(0).toUpperCase() + req.params.category.slice(1);
+		var productTypeName = req.params.product_type.charAt(0).toUpperCase() + req.params.product_type.slice(1);
+		var messages = req.flash('itemAdded');
+		res.render('bag/items', {title: 'Camera Bag', products: productRow, category: req.params.category, 
+			categoryName: categoryName, productTypeName: productTypeName, addSuccess: messages.length > 0, messages: messages});
 	});	
 });
 
@@ -52,8 +56,10 @@ router.get('/add-to-gearlist/:id', function(req, res, next){
 		}
 		gearlist.add(product, product.id);
 		req.session.gearlist = gearlist; // Store the gearlist in the session
-		console.log(req.session.gearlist);
-		res.redirect('/');
+		// console.log(req.session.gearlist);
+		var messages = ['\'' + product.itemName + '\' added to Camera Bag.'];
+		req.flash('itemAdded', messages);
+		return res.redirect('back');
 	});
 });
 
